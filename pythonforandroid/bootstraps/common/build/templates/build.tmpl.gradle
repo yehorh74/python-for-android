@@ -78,6 +78,9 @@ android {
             {% if args.sign -%}
             signingConfig signingConfigs.release
             {%- endif %}
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -124,4 +127,3 @@ dependencies {
     implementation 'com.airbnb.android:lottie:6.1.0'
     {%- endif %}
 }
-
