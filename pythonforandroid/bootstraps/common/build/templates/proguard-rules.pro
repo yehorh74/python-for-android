@@ -3,6 +3,8 @@
 -keep class org.kivy.android.PythonService { *; }
 -keep class org.kivy.android.Entrypoint { *; }
 -keep class org.kivy.android.PythonUtil { *; }
+-keep class org.libsdl.app.** { *; }
+-keep class org.kivy.android.** { *; }
 
 -keep class **.AdMobBridge { *; }
 
@@ -16,4 +18,5 @@
 -dontwarn **
 
 # 5. Atrybuty wymagane do stabilnego działania refleksji
--keepattributes *Annotation*,Signature,InnerClasses
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
+
