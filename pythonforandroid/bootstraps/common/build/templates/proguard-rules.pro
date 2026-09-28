@@ -1,22 +1,28 @@
-# 1. Punkty wejścia Kivy i PyJnius 
--keep class org.kivy.android.PythonActivity { *; }
--keep class org.kivy.android.PythonService { *; }
--keep class org.kivy.android.Entrypoint { *; }
--keep class org.kivy.android.PythonUtil { *; }
--keep class org.libsdl.app.** { *; }
+# 1. Klasy Kivy, SDL2 oraz legacy RenPy 
 -keep class org.kivy.android.** { *; }
+-keep class org.libsdl.app.** { *; }
+-keep class org.renpy.android.** { *; }
 
+# 2. PyJniu
+-keep class org.jnius.** { *; }
+
+# 3. Klasy systemowe Androida wywoływane dynamicznie przez autoclass()
+-keep class android.content.** { *; }
+-keep class android.view.** { *; }
+-keep class android.util.** { *; }
+-keep class android.os.** { *; }
+-keep class android.app.** { *; }
+
+# 4. Własne mosty i metody natywne JNI
 -keep class **.AdMobBridge { *; }
-
-# 3. Metody natywne JNI wywoływane przez PyJnius
 -keepclasseswithmembers class * {
     native <methods>;
 }
 
-# 4. Ignorowanie ostrzeżeń Google Services 
+# 5. Atrybuty refleksji wymagane przez PyJnius
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod,Exceptions
+
+# 6. Ignorowanie ostrzeżeń dla bibliotek zewnętrznych
 -dontwarn com.google.android.gms.**
+-dontwarn org.jnius.**
 -dontwarn **
-
-# 5. Atrybuty wymagane do stabilnego działania refleksji
--keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
-
