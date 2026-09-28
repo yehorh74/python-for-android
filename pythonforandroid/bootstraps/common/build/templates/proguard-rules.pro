@@ -16,7 +16,8 @@
 -keep class android.os.** { *; }
 -keep class android.app.** { *; }
 
--keep class **.AdMobBridge { *; }
+-keep class org.daned.linguobook.** { *; }
+-keep class **.AdMobBridge** { *; }
 -keepclasseswithmembers class * {
     native <methods>;
 }
