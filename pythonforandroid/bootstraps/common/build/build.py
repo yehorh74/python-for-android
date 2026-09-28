@@ -635,6 +635,13 @@ main.py that loads it.''')
         remove('AndroidManifest.xml')
     shutil.copy(manifest_path, 'AndroidManifest.xml')
 
+    proguard_template = join(curdir, 'templates', 'proguard-rules.pro')
+    proguard_dest = 'proguard-rules.pro'
+    if exists(proguard_template):
+        shutil.copy(proguard_template, proguard_dest)
+    else:
+        print(f"Warning: proguard template not found at {proguard_template}")
+
     # gradle build templates
     render(
         'build.tmpl.gradle',
